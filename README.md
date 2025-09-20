@@ -133,5 +133,29 @@ This section describes the runtime flow, component responsibilities, and how the
 8) Tests
 - Tests are located in `tests/` and focus on component method logic (validation, formatting, filtering) to keep them simple and fast. Jest configuration is in `jest.config.js`. Use `npm test` or `npx jest` to run them.
  
+## Simple Flow 
+
+- App starts at `src/main.js` → mounts `App.vue` (sidebar + `<router-view>`).
+- Navigate via sidebar: Dashboard (`/`), Payments (`/payments`), Users (`/users`).
+- New → `/payments/new` or `/users/new` → submit form → POST to API → redirect to list.
+- View → `/payments/:id` → fetch single item → show details.
+- Edit → `/payments/:id/edit` → load item into form → submit → PUT to API → redirect to list.
+- Delete → confirm → DELETE to API → refresh list.
+
+## Folder structure 
+
+- `src/` — application source code (components, views, services, models, router, store).
+- `src/components/` — small reusable UI components (e.g., `HomeComponent.vue`).
+- `src/views/` — page-level views (PaymentList, PaymentForm, PaymentDetail, UserList, UserForm).
+- `src/services/` — API wrapper functions that call the axios instance (business/network logic).
+- `src/models/` — data model helpers (Payment, User) for parsing/formatting API data.
+- `src/api/` — axios instance and API configuration (baseURL, headers).
+- `src/router/` — Vue Router route definitions and navigation setup.
+- `src/store/` — Pinia stores for shared app state (logged-in user, etc.).
+- `public/` — static assets served by Vite (icons, images).
+- `tests/` — Jest unit tests for components and utilities.
+- `package.json` & `vite.config.js` — project scripts and build/dev configuration.
+
+ 
 
 

@@ -12,11 +12,6 @@ dist
 dist-ssr
 *.local
 
-src/api
-src/views
-src/router
-src/components
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
