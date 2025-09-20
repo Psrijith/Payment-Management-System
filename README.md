@@ -1,13 +1,15 @@
 # Vue 3 - Payment Management System
 
-A simple payment management frontend built with Vue 3, Vite, Pinia, and Tailwind-style utility classes. It includes user and payment CRUD views, routing, API services (Axios), and a small Jest test suite.
+Repository: https://github.com/Psrijith/Payment-Management-System
+
+A simple payment management frontend built with Vue 3, Vite, Vuex, and Tailwind-style utility classes. It includes user and payment CRUD views, routing, API services (Axios), and a small Jest test suite.
 
 This README covers setup, running the app, testing, and where to find key files.
 
 ## Features
 
 - Vue 3 + Vite for fast development
-- Pinia for state management
+- Vuex for state management
 - Vue Router for navigation
 - Payment and User models with formatting helpers
 - REST API services (Axios) with a configurable base URL
@@ -55,7 +57,7 @@ The current tests focus on component method logic (validation, formatting, filte
 
 ## Project structure (important files)
 
-- `src/main.js` — app entry point (mounts Vue, Pinia, Router)
+- `src/main.js` — app entry point (mounts Vue, Vuex store, Router)
 - `src/App.vue` — main layout, navigation, and top bar
 - `src/router/index.js` — route definitions for users/payments
 - `src/views/PaymentList.vue` — payments listing and filtering
@@ -128,7 +130,7 @@ This section describes the runtime flow, component responsibilities, and how the
 - `src/services/PaymentService.js` and `src/services/UserService.js` wrap Axios (`src/api/index.js`) to keep HTTP code in one place. Update `src/api/index.js` to point to your own backend.
 
 7) State management
-- Pinia is installed (`createPinia()` in `main.js`). The user store exposes a static `loggedInUser` in `src/store/index.js` (name and role) used by `App.vue` for display.
+- Vuex is used for app-level state. The user store lives in `src/store/index.js` (name and role) and is used by `App.vue` for display.
 
 8) Tests
 - Tests are located in `tests/` and focus on component method logic (validation, formatting, filtering) to keep them simple and fast. Jest configuration is in `jest.config.js`. Use `npm test` or `npx jest` to run them.
@@ -151,7 +153,7 @@ This section describes the runtime flow, component responsibilities, and how the
 - `src/models/` — data model helpers (Payment, User) for parsing/formatting API data.
 - `src/api/` — axios instance and API configuration (baseURL, headers).
 - `src/router/` — Vue Router route definitions and navigation setup.
-- `src/store/` — Pinia stores for shared app state (logged-in user, etc.).
+- `src/store/` — Vuex store for shared app state (logged-in user, etc.).
 - `public/` — static assets served by Vite (icons, images).
 - `tests/` — Jest unit tests for components and utilities.
 - `package.json` & `vite.config.js` — project scripts and build/dev configuration.

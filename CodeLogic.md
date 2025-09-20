@@ -11,7 +11,7 @@ GitHub repo: <[Github Project Link](https://github.com/Psrijith/Payment-Manageme
 1) Brief walkthrough of the logic applied to solve the project
 
 Overview
-- The frontend is a Vue 3 single-page application built with Vite. Pinia is used for simple global state (logged-in user), Vue Router for navigation, and Axios for API calls.
+- The frontend is a Vue 3 single-page application built with Vite. Vuex is used for simple global state (logged-in user), Vue Router for navigation, and Axios for API calls.
 
 Key design decisions and logic
 - Keep business logic in views and models: `Payment` and `User` models provide `fromJson`/`toJson` helpers and formatting getters (`formattedAmount`, `formattedDate`) so views render consistent data.
@@ -20,7 +20,7 @@ Key design decisions and logic
 - Minimal, targeted fixes: fixed a duplicate import in `src/main.js` that prevented app bootstrap; added `jest.config.js` and straightforward Jest tests to make the test suite pass.
 
 File-level flow (runtime)
-- `src/main.js` — createApp -> install Pinia -> install Router -> mount app.
+- `src/main.js` — createApp -> install Vuex store -> install Router -> mount app.
 - `src/App.vue` — global layout with sidebar and top bar; uses `useUserStore` for logged in user display and contains `<router-view/>`.
 - `src/router/index.js` — defines routes for Dashboard, Users, Payments list/create/detail/edit, and a catch-all redirect.
 - Payment List flow (`src/views/PaymentList.vue`): on mounted, `loadPayments()` calls `PaymentService.fetchPayments()`, maps data to `Payment` models, stores to `payments`, then runs `filterPayments()` to populate `filteredPayments`.
@@ -44,7 +44,7 @@ Steps
 
 ```bash
 git clone <repo-url>
-cd paymentpp
+cd Payment-Management-System
 ```
 
 2. Install dependencies
@@ -68,4 +68,3 @@ npm test
 # or
 npx jest
 ```
- 

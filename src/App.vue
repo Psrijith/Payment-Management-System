@@ -130,7 +130,7 @@
 </template>
 
 <script>
-import { useUserStore } from './store';
+import { useUserStore } from './store/index.js';
 export default {
   name: 'App',
   data() {
